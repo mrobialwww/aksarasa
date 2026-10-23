@@ -33,11 +33,22 @@ const navigation = [
     },
 ];
 
-export function Sidebar() {
+interface SidebarProps {
+    isOpen: boolean;
+    onClose: () => void;
+}
+
+export function Sidebar({ isOpen, onClose }: SidebarProps) {
     const pathname = usePathname();
 
     return (
-        <aside className="fixed inset-y-0 left-0 z-50 hidden w-65 flex-col gap-10 bg-white px-4 py-8 md:flex">
+        <aside
+            className={cn(
+                "fixed inset-y-0 left-0 z-50 hidden w-65 flex-col gap-10 bg-white px-4 py-8 md:flex",
+                "transition-transform duration-300 ease-in-out",
+                isOpen ? "translate-x-0" : "-translate-x-full",
+            )}
+        >
             <div className="flex items-center justify-between gap-8 px-2">
                 <Link href="/" className="flex items-center gap-4" aria-label="AksaRasa beranda">
                     <Image src="/Logo black.svg" alt="AksaRasa" width={32} height={29} className="h-7.25 w-8 object-contain" priority />
@@ -46,6 +57,7 @@ export function Sidebar() {
                 <button
                     type="button"
                     aria-label="Tutup sidebar"
+                    onClick={onClose}
                     className="flex size-6 items-center justify-center text-[#424242] transition-colors hover:text-[#0069E0]"
                 >
                     <PanelLeftClose className="size-6" strokeWidth={1.8} />
