@@ -34,11 +34,11 @@ const navigation = [
 ];
 
 interface SidebarProps {
-    isOpen: boolean;
-    onClose: () => void;
+    isOpen?: boolean;
+    onClose?: () => void;
 }
 
-export function Sidebar({ isOpen, onClose }: SidebarProps) {
+export function Sidebar({ isOpen = true, onClose = () => {} }: SidebarProps) {
     const pathname = usePathname();
 
     return (
