@@ -1,0 +1,7 @@
+# Requirements untuk konversi model (satu kali saja)
+tensorflowjs
+
+# Requirements script inference asli (untuk referensi / testing lokal)
+tensorflow
+opencv-python
+numpy
